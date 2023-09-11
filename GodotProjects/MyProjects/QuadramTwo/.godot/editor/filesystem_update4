@@ -1,0 +1,6 @@
+res://default_env.tres
+res://scenes/playerScene/GrapGun.tscn
+res://scripts/player/Grapple.gd
+res://scenes/playerScene/playerbody.tscn
+res://scripts/player/playerbody.gd
+res://scenes/tutorialStage/tutorial.tscn

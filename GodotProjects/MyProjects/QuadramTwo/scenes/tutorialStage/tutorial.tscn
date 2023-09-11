@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://bg6tgv44tthn"]
+
+[ext_resource type="PackedScene" uid="uid://mbsu70c7yf0f" path="res://scenes/tutorialStage/World.tscn" id="1_yfcne"]
+[ext_resource type="PackedScene" uid="uid://cr4nhqgtkii64" path="res://scenes/playerScene/playerbody.tscn" id="2_8we5d"]
+[ext_resource type="PackedScene" uid="uid://cw0jv6v5i6m5d" path="res://scenes/tutorialStage/tutorial_stage.tscn" id="3_w0a85"]
+
+[node name="tutorial" type="Node"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.0539066, 0.997577, 0.0439699, 0.104066, -0.0381816, 0.993837, 0.993109, 0.0581501, -0.101756, 21.5748, 25.5473, 0)
+
+[node name="WorldEnvironment" parent="." instance=ExtResource("1_yfcne")]
+
+[node name="playerbody" parent="." instance=ExtResource("2_8we5d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 87.4271, 19.5411, -30.429)
+
+[node name="tutStage" parent="." instance=ExtResource("3_w0a85")]

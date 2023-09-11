@@ -1,0 +1,68 @@
+[gd_scene load_steps=11 format=3 uid="uid://cr4nhqgtkii64"]
+
+[ext_resource type="Script" path="res://scripts/player/playerbody.gd" id="1_d27wn"]
+[ext_resource type="Texture2D" uid="uid://dcmrxfeg0cpp0" path="res://images/crosshair.png" id="1_hhn4f"]
+[ext_resource type="PackedScene" uid="uid://delesfsrkuvj" path="res://scenes/playerScene/GrapGun.tscn" id="2_k678b"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_v276a"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aup7b"]
+albedo_color = Color(0.878431, 0.686275, 0.254902, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_s66og"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tffsl"]
+albedo_color = Color(0.27451, 0.356863, 1, 1)
+metallic = 1.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_71q32"]
+size = Vector3(0.4, 0.4, 0.8)
+
+[sub_resource type="Skin" id="Skin_p3o6m"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_kbodi"]
+
+[node name="player" type="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+script = ExtResource("1_d27wn")
+
+[node name="bodycollisionshape" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_v276a")
+
+[node name="bodymesh" type="MeshInstance3D" parent="bodycollisionshape"]
+unique_name_in_owner = true
+material_override = SubResource("StandardMaterial3D_aup7b")
+mesh = SubResource("CapsuleMesh_s66og")
+
+[node name="shadesmesh" type="MeshInstance3D" parent="bodycollisionshape/bodymesh"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0.5, 0.35)
+material_override = SubResource("StandardMaterial3D_tffsl")
+mesh = SubResource("BoxMesh_71q32")
+skin = SubResource("Skin_p3o6m")
+skeleton = NodePath("../../..")
+
+[node name="campivot" type="Node3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="Camera3D" type="Camera3D" parent="campivot"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.5, -6)
+
+[node name="RayCast3D" type="RayCast3D" parent="campivot"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
+target_position = Vector3(0, 0, 200)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = SubResource("ImageTexture_kbodi")
+
+[node name="Crosshair" type="Sprite2D" parent="."]
+position = Vector2(520, 340)
+texture = ExtResource("1_hhn4f")
+
+[node name="holster" type="Node3D" parent="."]
+
+[node name="grapplegun" parent="holster" instance=ExtResource("2_k678b")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 1)

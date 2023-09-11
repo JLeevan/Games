@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://delesfsrkuvj"]
+
+[ext_resource type="Script" path="res://scripts/player/Grapple.gd" id="1_tunb1"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_lq6wi"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_pyqut"]
+size = Vector3(0.1, 0.1, 0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_e61ds"]
+size = Vector3(0.1, 0.25, 0.1)
+
+[sub_resource type="SeparationRayShape3D" id="SeparationRayShape3D_igfu1"]
+margin = 0.0
+length = 0.001
+
+[node name="grapplegun" type="StaticBody3D"]
+physics_material_override = SubResource("PhysicsMaterial_lq6wi")
+script = ExtResource("1_tunb1")
+
+[node name="grappleTimer" type="Timer" parent="."]
+
+[node name="barrelmesh" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_pyqut")
+skeleton = NodePath("")
+
+[node name="handlemesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.08, 0.2)
+mesh = SubResource("BoxMesh_e61ds")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.316624)
+shape = SubResource("SeparationRayShape3D_igfu1")
+
+[connection signal="timeout" from="grappleTimer" to="." method="_on_grapple_timer_timeout"]

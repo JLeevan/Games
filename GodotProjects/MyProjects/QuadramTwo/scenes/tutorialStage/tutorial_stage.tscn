@@ -1,0 +1,63 @@
+[gd_scene load_steps=7 format=3 uid="uid://cw0jv6v5i6m5d"]
+
+[ext_resource type="PackedScene" uid="uid://mq3iqg8k15xc" path="res://scenes/tutorialStage/floor.tscn" id="1_cxsfl"]
+[ext_resource type="PackedScene" uid="uid://cn4pao047ahn0" path="res://scenes/tutorialStage/pillar.tscn" id="2_ge5fg"]
+[ext_resource type="PackedScene" uid="uid://viebkoudm42e" path="res://scenes/tutorialStage/ramp.tscn" id="3_pco8u"]
+[ext_resource type="PackedScene" uid="uid://bjfcir0av0iv5" path="res://scenes/tutorialStage/platform.tscn" id="4_f84lx"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0wseo"]
+size = Vector3(100, 5, 100)
+
+[sub_resource type="BoxMesh" id="BoxMesh_751f5"]
+size = Vector3(100, 5, 100)
+
+[node name="tutStage" type="StaticBody3D"]
+
+[node name="floorShape" parent="." instance=ExtResource("1_cxsfl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+
+[node name="pillarShape" parent="." instance=ExtResource("2_ge5fg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -90, 100, -90)
+
+[node name="pillarShape2" parent="." instance=ExtResource("2_ge5fg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -90, 100, 90)
+
+[node name="pillarShape3" parent="." instance=ExtResource("2_ge5fg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 90, 100, 90)
+
+[node name="pillarShape4" parent="." instance=ExtResource("2_ge5fg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 90, 100, -90)
+
+[node name="rampShape" parent="." instance=ExtResource("3_pco8u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47, 10, -77)
+
+[node name="platformShape" parent="." instance=ExtResource("4_f84lx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 202.5, 50)
+shape = SubResource("BoxShape3D_0wseo")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="platformShape"]
+mesh = SubResource("BoxMesh_751f5")
+
+[node name="platformShape2" parent="." instance=ExtResource("4_f84lx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70, 22.4195, 90)
+
+[node name="platformShape3" parent="." instance=ExtResource("4_f84lx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -70, 123.69, -90)
+
+[node name="platformShape4" parent="." instance=ExtResource("4_f84lx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 90, 172.096, -70)
+
+[node name="platformShape5" parent="." instance=ExtResource("4_f84lx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -90, 55.8948, 70)
+
+[node name="floorShape2" parent="." instance=ExtResource("1_cxsfl")]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 105, 25, 0)
+
+[node name="floorShape3" parent="." instance=ExtResource("1_cxsfl")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 50, -105)
+
+[node name="floorShape4" parent="." instance=ExtResource("1_cxsfl")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 100, 100)
+
+[node name="floorShape5" parent="." instance=ExtResource("1_cxsfl")]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -105, 75, 0)
